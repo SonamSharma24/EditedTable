@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>React Task</title>
+  <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+  <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+  <style>
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      border: 1px solid #fff;
+    }
+    th, td {
+      border: 1px solid grey;
+      padding: 10px;
+      text-align: left;
+      font-size: 16px;
+      font-family: sans-serif
+    }
+    input {
+      width: 100%;
+    }
+    .heading{
+        font-size: 18px;
+        color: black;
+        background-color: grey;
+    }
+    .TaskName{
+        width: 25%;
+    }
+    .TaskValue{
+        width: 15%;
+    }
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+
+  <script type="text/babel">
+    const initialData = [
+      { 
+        task: 'Onboarding Call',
+        values:
+        {
+            column1: '', column2: '', column3: '' , column4: '', column5: ''
+        }
+      },
+      { 
+        task: 'Google Search Console Access', 
+        values:
+        {
+            column1: '', column2: '', column3: '' , column4: '', column5: ''
+        }
+
+      },
+      { 
+        task: 'Google Analytics Access',
+        values:
+        {
+            column1: '', column2: '', column3: '' , column4: '', column5: ''
+        } 
+      },
+      { 
+        task: 'Website Access',
+        values:
+        {
+            column1: '', column2: '', column3: '' , column4: '', column5: ''
+        }
+
+      },
+      { 
+        task: 'Technical Audit',
+        values:
+        {
+            column1: '', column2: '', column3: '' , column4: '', column5: ''
+        } 
+
+      },
+      { 
+        task: 'Anchor Text and Semantic Analysis',
+        values:
+        {
+            column1: '', column2: '', column3: '' , column4: '', column5: ''
+        } 
+
+      },
+      { 
+        task: 'Competitor Analysis', 
+        values:
+        {
+            column1: '', column2: '', column3: '' , column4: '', column5: ''
+        } 
+
+      },
+      { 
+        task: 'Anchor Text / URL Mapping', 
+        values:
+        {
+            column1: '', column2: '', column3: '' , column4: '', column5: ''
+        } 
+
+      },
+      { 
+        task: 'Google Data Studio Report + Local Reporting Suite', 
+        values:
+        {
+            column1: '', column2: '', column3: '' , column4: '', column5: ''
+        }
+
+      },
+      { 
+        task: 'Site Level Optimization', 
+        values:
+        {
+            column1: '', column2: '', column3: '' , column4: '', column5: ''
+        }
+
+      },
+      { 
+        task: 'On Page Optimization', 
+        values:
+        {
+            column1: '', column2: '', column3: '' , column4: '', column5: ''
+        } 
+
+      },
+      { 
+        task: 'Content Creation',
+        values:
+        {
+            column1: '', column2: '', column3: '' , column4: '', column5: ''
+        } 
+
+      },
+      { 
+        task: 'Content Publishing', 
+        values:
+        {
+            column1: '', column2: '', column3: '' , column4: '', column5: ''
+        } 
+
+      },
+      { 
+        task: 'Premium Press Release',
+        values:
+        {
+            column1: '', column2: '', column3: '' , column4: '', column5: ''
+        }  
+
+      },
+      { 
+        task: 'Authority Niche Placements',
+        values:
+        {
+            column1: '', column2: '', column3: '' , column4: '', column5: ''
+        }
+
+      },
+      { 
+        task: 'Review Management',
+        values:
+        {
+            column1: '', column2: '', column3: '' , column4: '', column5: ''
+        }  
+
+      },
+      { 
+        task: 'Index Links',
+        values:
+        {
+            column1: '', column2: '', column3: '' , column4: '', column5: ''
+        } 
+
+      },
+      {
+        task: 'Video Recap',
+        values:
+        {
+            column1: '', column2: '', column3: '' , column4: '', column5: ''
+        } 
+
+      }
+    ];
+
+    function App() {
+      const [data, setData] = React.useState(initialData);
+
+      const handleChange = (index, event,columnKey) => {
+        const updatedData = [...data];
+        updatedData[index].values[columnKey] = event.target.value;
+        setData(updatedData);
+      };
+
+      const handleSubmit = () => {
+        console.log("Data ready to send to API:", data);
+        alert("Data is ready to send to the API. Check the console for the output.");
+      };
+
+      return (
+        <div>
+          <table>
+            <thead>
+                <tr>
+                    <th colspan="6" className="heading">Month</th>
+                </tr>
+              <tr>
+                <th className="TaskName">Task</th>
+                <th className="TaskValue">Value1</th>                
+                <th className="TaskValue">Value2</th>
+                <th className="TaskValue">Value3</th>
+                <th className="TaskValue">Value4</th>
+                <th className="TaskValue">Value5</th>
+              </tr>
+            </thead>
+            <tbody>
+              {data.map((item, index) => (
+                <tr key={index}>
+                  <td>{item.task}</td>
+                  <td>
+                    <input
+                      type="text"
+                      value={item.values.column1}
+                      onChange={(event) => handleChange(index,event,"column1")}
+                    />
+                  </td>
+                  <td>
+                    <input
+                      type="text"
+                      value={item.values.column2}
+                      onChange={(event) => handleChange(index, event, "column2")}
+                    />
+                  </td><td>
+                    <input
+                      type="text"
+                      value={item.values.column3}
+                      onChange={(event) => handleChange(index, event, "column3")}
+                    />
+                  </td><td>
+                    <input
+                      type="text"
+                      value={item.values.column4}
+                      onChange={(event) => handleChange(index,event,"column4" )}
+                    />
+                  </td><td>
+                    <input
+                      type="text"
+                      value={item.values.column5}
+                      onChange={(event) => handleChange(index, event,"column5")}
+                    />
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+          <br />
+          <button onClick={handleSubmit}>Submit Data</button>
+        </div>
+      );
+    }
+
+    ReactDOM.render(<App />, document.getElementById('root'));
+  </script>
+</body>
+</html>
